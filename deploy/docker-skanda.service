@@ -1,0 +1,13 @@
+#from http://stackoverflow.com/questions/30449313/how-do-i-make-a-docker-container-start-automatically-on-system-boot
+[Unit]
+Description=Redis container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a skanda-schema
+ExecStop=/usr/bin/docker stop -t 2 skanda-schema
+
+[Install]
+WantedBy=default.target
